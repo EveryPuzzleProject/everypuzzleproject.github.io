@@ -2,12 +2,222 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Every Puzzle Project</title>
-<link rel="canonical" href="https://blitz.xwordapp.com/">
-<meta http-equiv="refresh" content="0; url=https://blitz.xwordapp.com/">
+<meta name="description" content="Finding, indexing and transcribing every crossword ever printed. Old puzzles survive on paper or as scans you can look at but not search; we turn them into xd files, linked to their source scans, for the xd Crossword Corpus.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Every Puzzle Project">
+<meta property="og:title" content="Every Puzzle Project">
+<meta property="og:description" content="Finding, indexing and transcribing every crossword ever printed. Old puzzles survive on paper or as scans you can look at but not search; we turn them into xd files, linked to their source scans, for the xd Crossword Corpus.">
+<meta property="og:url" content="https://everypuzzleproject.org/">
+<meta property="og:image" content="https://blitz.xwordapp.com/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Judge magazine's November 15, 1924 cover, a full-page crossword, beside the words: Bringing old crosswords back">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://everypuzzleproject.org/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 3 3%27%3E%3Crect width=%273%27 height=%273%27 fill=%27%23fff%27/%3E%3Crect width=%271%27 height=%271%27 fill=%27%231d1b17%27/%3E%3Crect x=%272%27 y=%272%27 width=%271%27 height=%271%27 fill=%27%231d1b17%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="site.css?v=202611061">
+<style>
+  .lede { font: 19px/1.5 var(--serif); max-width: 680px; margin: 8px 0 0; }
+  .aside { font-size: 15px; color: var(--muted); max-width: 680px; margin: 12px 0 0; }
+  .cta { display: inline-block; margin-top: 16px; padding: 8px 14px; border-radius: 6px; background: var(--accent); color: var(--bg);
+    text-decoration: none; font-weight: 600; }
+  .cta:hover { filter: brightness(1.1); }
+
+  /* The chain */
+  .chain { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin: 12px 0 0; counter-reset: step; }
+  .chain > div { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 16px 14px; }
+  .chain > div::before { counter-increment: step; content: counter(step); display: inline-block; width: 24px; height: 24px; border-radius: 50%;
+    background: var(--accent-soft); color: var(--accent); font: 700 13px/24px var(--sans); text-align: center; margin-bottom: 8px; }
+  .chain b { display: block; font: 600 19px/1.25 var(--serif); }
+  .chain p { margin: 6px 0 0; font-size: 14.5px; color: var(--muted); }
+  .chain .go { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 8px; font-size: 14px; }
+  .chain .go a { text-decoration: none; }
+  .chain .go a:hover { text-decoration: underline; }
+
+  /* The publications board */
+  .board { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; margin-top: 12px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 18px 16px; display: flex; flex-direction: column; }
+  .card h3 { margin: 0; font: 600 21px/1.2 var(--serif); }
+  .card h3 a { color: var(--ink); text-decoration: none; }
+  .card h3 a:hover { text-decoration: underline; }
+  .card .years { font-size: 14px; color: var(--muted); margin-top: 2px; }
+  .card .desc { font-size: 14.5px; margin: 8px 0 0; color: var(--ink); flex: 1; }
+  .card .big { font: 700 34px/1 var(--serif); letter-spacing: -.02em; margin-top: 14px; }
+  .card .big small { font: 500 14px var(--sans); color: var(--muted); letter-spacing: 0; margin-left: 6px; }
+  .bar { display: flex; height: 10px; border-radius: 5px; overflow: hidden; background: var(--line); margin: 10px 0 8px; gap: 2px; }
+  .bar span { display: block; height: 100%; }
+  .counts { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13.5px; color: var(--muted); margin-top: 6px; }
+  .counts b { color: var(--ink); font-weight: 600; }
+  .sw { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
+  .k-done { background: var(--good); }
+  .k-progress { background: var(--accent); }
+  .k-wanted { background: var(--warm); }
+  .k-other { background: var(--line); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--muted) 40%, transparent); }
+  .card .links { margin-top: 14px; font-size: 14px; display: flex; flex-wrap: wrap; gap: 4px 14px; }
+  .card .status-note { font-size: 13px; color: var(--muted); margin-top: 10px; }
+
+  /* Ways to help */
+  .help { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin-top: 12px; }
+  .help div { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+  .help b { display: block; font: 600 16px var(--serif); margin-bottom: 4px; }
+  .help p { margin: 0; font-size: 14.5px; }
+
+  /* Blog */
+  .blog { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin: 12px 0 8px; }
+  .blog a { display: block; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px;
+    text-decoration: none; color: var(--ink); }
+  .blog a:hover { border-color: var(--accent); }
+  .blog b { display: block; font: 600 18px/1.3 var(--serif); }
+  .blog p { margin: 6px 0 0; font-size: 14.5px; color: var(--muted); }
+  .blog .date { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .more { font-size: 15px; }
+
+  footer { border-top: 1px solid var(--line); margin-top: 40px; }
+  footer .wrap { padding-top: 18px; padding-bottom: 28px; font-size: 14px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 20px; }
+  @media (max-width: 560px) { .lede { font-size: 17px; } h1 { font-size: 26px; } }
+</style>
 </head>
 <body>
-<p>The Every Puzzle Project is at <a href="https://blitz.xwordapp.com/">blitz.xwordapp.com</a>.</p>
+<header class="epp-header"><div class="wrap">
+  <a href="./">Every Puzzle Project</a>
+  <nav><a href="#publications">Publications</a><a href="#help">Help</a><a href="https://blitz.xwordapp.com/blog/">Blog</a><a href="https://github.com/EveryPuzzleProject">GitHub</a></nav>
+</div></header>
+<main class="wrap">
+  <h1>Finding, indexing and transcribing every crossword ever printed</h1>
+  <p class="lede">The first crossword appeared in 1913. Since then countless newspapers, magazines and books have printed
+    them, and most survive only on paper, or as page scans you can look at but not search. We catalog the publications,
+    index every puzzle they ran, and transcribe each one into an <a href="https://github.com/century-arcade/xdformat">xd</a>
+    file, linked to the scan it was read from, so that it can be searched, studied and preserved. The finished puzzles
+    join the xd Crossword Corpus, a research archive of crosswords from 1913 to today.</p>
+  <p class="aside">This is a research archive, not a place to play old puzzles. Inspired by David Steinberg's
+    <a href="http://www.preshortzianpuzzleproject.com/">Pre-Shortzian Puzzle Project</a>, whose volunteers digitized the
+    New York Times crosswords of the pre-digital era.</p>
+
+  <h2>How a puzzle gets from a page to the corpus</h2>
+  <div class="chain">
+    <div><b>Find</b>
+      <p>The catalog lists every publication known to have printed a crossword: when it ran them, where copies survive,
+        and how far we've got.</p><div class="go"><a href="https://github.com/EveryPuzzleProject/catalog">The catalog →</a></div></div>
+    <div><b>Index</b>
+      <p>One repo per publication records which puzzles exist, which we have a copy of, and which pages are still
+        wanted.</p><div class="go"><a href="#publications">The publications board ↓</a></div></div>
+    <div><b>Transcribe and check</b>
+      <p>OCR built for this project reads each puzzle from its scan. Volunteers and their Claude check every square and clue
+        against the page, on the review site.</p><div class="go"><a href="https://blitz.xwordapp.com/">Blitz →</a><a href="https://blitz.xwordapp.com/review/">The review site →</a></div></div>
+    <div><b>The corpus</b>
+      <p>Checked puzzles join the xd Crossword Corpus, and can be browsed and searched alongside a century of others at
+        crosswordreference.com.</p><div class="go"><a href="https://github.com/century-arcade/xdcorpus">The xd Crossword Corpus →</a><a href="https://crosswordreference.com">crosswordreference.com →</a></div></div>
+  </div>
+
+  <h2 id="publications">Publications</h2>
+  <p class="muted" style="margin:0;max-width:680px">Each publication has its own repo and status page. The counts come from the
+    public tables those repos keep, and mean what each repo's states mean: a found page, a reviewed transcription, a puzzle
+    in the corpus. Only metadata is shown here.</p>
+  <div class="board" id="board"><p class="muted">Loading the publications…</p></div>
+
+  <h2 id="help">Ways to help</h2>
+  <div class="help">
+    <div><b>You've seen a crossword somewhere</b>
+      <p>Tell us the publication and the date: <a href="https://github.com/EveryPuzzleProject/catalog/issues/new?template=report-puzzle.yml">report a puzzle</a>.
+        Know a paper, magazine, book or site that ran them? <a href="https://github.com/EveryPuzzleProject/catalog/issues/new?template=report-publication.yml">Report a publication</a>.
+        A paper copy in front of you counts.</p></div>
+    <div><b>You have a Claude account</b>
+      <p>Direct your Claude to review puzzles: it checks each OCR draft against the scan, square by square and clue by clue, and
+        sends its corrections as a pull request in your name. <a href="https://github.com/EveryPuzzleProject/blitz#how-to-help">How to help</a>
+        has the prompt to paste. Or point it at an open <a href="https://github.com/EveryPuzzleProject/catalog/issues?q=is%3Aopen+label%3Alead">lead</a>
+        in the catalog and ask it to find where that publication's pages survive.</p></div>
+    <div><b>You have Newspapers.com or a library card</b>
+      <p>Each status page lists the pages it still wants: a missing Sunday, a cleaner scan, an answer key. Find one, clip it, and
+        open an issue with the date and the clipping link. Please don't upload page images; issues are public.</p></div>
+    <div><b>You have an eye for detail</b>
+      <p>Check transcriptions yourself on the <a href="https://blitz.xwordapp.com/review/">review site</a>: each clue is shown beside
+        its scan. No account needed.</p></div>
+  </div>
+  <a class="cta" href="https://github.com/EveryPuzzleProject/blitz#how-to-help">Get involved</a>
+
+  <h2>From the blog</h2>
+  <div class="blog">
+    <a href="https://blitz.xwordapp.com/blog/pelham.html"><b>The Harvard student behind two of <i>Judge</i>'s most creative crosswords</b>
+      <p>Two of the most inventive crosswords of 1924 were sent in from a student rooming house in Cambridge. Was their author one of
+        the first Black students at Harvard Business School?</p><div class="date">12 October 2026</div></a>
+    <a href="https://blitz.xwordapp.com/blog/judge.html"><b><i>Judge</i>, 1924–1939: our first full series</b>
+      <p>Every crossword in <i>Judge</i> magazine from 1924 to 1939, 531 puzzles, read from scans on archive.org into xd files.
+        What went well, what was hard, and what we're changing for the next one.</p><div class="date">12 October 2026</div></a>
+  </div>
+  <p class="more"><a href="https://blitz.xwordapp.com/blog/">All posts →</a></p>
+</main>
+<footer><div class="wrap">
+  <a href="https://github.com/EveryPuzzleProject">GitHub: EveryPuzzleProject</a>
+  <a href="https://github.com/century-arcade/xdcorpus">The xd Crossword Corpus</a>
+  <a href="https://crosswordreference.com">crosswordreference.com</a>
+  <a href="https://github.com/EveryPuzzleProject/catalog/issues">Contact: open an issue</a>
+</div></footer>
+<script>
+// The publications board. publications.json says, for each publication, which public TSV
+// gives its counts and how to read it; nothing here is specific to a publication.
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
+const fmt = n => n.toLocaleString('en-US');
+
+function parseTsv(text) {
+  const lines = text.replace(/\r/g, '').split('\n').filter(l => l.length);
+  const head = lines.shift().split('\t');
+  return lines.map(l => { const cells = l.split('\t'); return Object.fromEntries(head.map((h, i) => [h, cells[i] ?? ''])); });
+}
+
+// Returns [{label, kind, n}] for one source, or null if the fetch failed.
+async function countSource(src) {
+  const r = await fetch(src.url, {cache: 'no-cache'});
+  if (!r.ok) throw new Error(`${r.status} ${src.url}`);
+  const rows = parseTsv(await r.text());
+  return src.counts.map(c => ({
+    label: c.label, kind: c.kind,
+    n: c.states ? rows.filter(row => c.states.includes(row[src.column])).length : rows.length,
+  }));
+}
+
+function card(pub, results, loading) {
+  const name = `<h3><a href="${esc(pub.status_page)}">${esc(pub.name)}</a></h3>`;
+  let data = '', failed = false;
+  results.forEach((res, i) => {
+    const src = pub.sources[i];
+    if (!res) { failed = true; return; }
+    const shown = res.filter(c => c.n > 0);
+    const total = res.reduce((s, c) => s + c.n, 0);
+    const partition = !!src.column;   // states partition the rows, so a bar and a total make sense
+    if (partition) {
+      const done = res.filter(c => c.kind === 'done').reduce((s, c) => s + c.n, 0);
+      data += `<div class="big">${fmt(done)}<small>of ${fmt(total)} ${esc(src.unit)}</small></div>
+        <div class="bar">${shown.map(c => `<span class="k-${c.kind}" style="width:${100 * c.n / total}%" title="${esc(c.label)}: ${fmt(c.n)}"></span>`).join('')}</div>`;
+    } else {
+      data += shown.map(c => `<div class="big">${fmt(c.n)}<small>${esc(c.label.toLowerCase())}</small></div>`).join('');
+      return;
+    }
+    data += `<div class="counts">${shown.map(c => `<span><i class="sw k-${c.kind}"></i><b>${fmt(c.n)}</b> ${esc(c.label.toLowerCase())}</span>`).join('')}</div>`;
+  });
+  if (failed) data += `<p class="status-note">${loading ? 'Loading counts…' : "Couldn't load this publication's table; see its status page."}</p>`;
+  return `<section class="card" id="pub-${esc(pub.id)}">${name}
+    <div class="years">${esc(pub.years)}</div>
+    <p class="desc">${esc(pub.description)}</p>
+    ${data}
+    <div class="links"><a href="${esc(pub.status_page)}">Status page</a><a href="${esc(pub.repo)}">Repo</a></div>
+  </section>`;
+}
+
+(async () => {
+  const reg = await fetch('publications.json', {cache: 'no-cache'}).then(r => r.json());
+  const board = document.getElementById('board');
+  // Draw every card at once with static text, then fill in counts as each table arrives.
+  board.innerHTML = reg.publications.map(pub => card(pub, pub.sources.map(() => null), true)).join('');
+  await Promise.all(reg.publications.map(async pub => {
+    const results = await Promise.all(pub.sources.map(src => countSource(src).catch(e => { console.warn(pub.id, e.message); return null; })));
+    document.getElementById(`pub-${pub.id}`).outerHTML = card(pub, results);
+  }));
+})().catch(e => {
+  document.getElementById('board').innerHTML = `<p class="muted">Couldn't load the publications list (${esc(e.message)}).
+    See the <a href="https://github.com/EveryPuzzleProject">project's repos on GitHub</a>.</p>`;
+});
+</script>
 </body>
 </html>

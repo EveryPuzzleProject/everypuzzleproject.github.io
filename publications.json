@@ -1,0 +1,144 @@
+{
+  "_about": "Registry of the publications the Every Puzzle Project is working on. index.html draws one card per entry from the public TSV each repo keeps. Each source names a TSV (raw.githubusercontent.com, branch main, unless the repo publishes it elsewhere), the column that holds a row's state, and how to group the states into the counts shown. A count with no 'states' is the number of rows in the file. 'kind' picks the colour: done, progress, wanted, other. Show metadata only: dates, numbers, states. Never clues or grids.",
+  "publications": [
+    {
+      "id": "judge",
+      "name": "Judge",
+      "years": "1924–1939",
+      "description": "The New York humor magazine's crosswords, from its first on November 1, 1924, read from scans on archive.org. Our first full series.",
+      "repo": "https://github.com/EveryPuzzleProject/judge",
+      "status_page": "https://everypuzzleproject.org/judge/",
+      "sources": [
+        {
+          "url": "https://everypuzzleproject.org/judge/status.tsv",
+          "note": "Built by CI from puzzles.tsv and manual.tsv; not committed to the repo. One row per puzzle.",
+          "unit": "puzzles",
+          "column": "state",
+          "counts": [
+            {"label": "Reviewed", "kind": "done", "states": ["reviewed", "in-gxd"]},
+            {"label": "In review", "kind": "progress", "states": ["need-review", "in-review"]},
+            {"label": "Needs a person", "kind": "wanted", "states": ["needs-person"]},
+            {"label": "In the scans, not yet read", "kind": "other", "states": ["need-ocr"]},
+            {"label": "Pages wanted", "kind": "wanted", "states": ["missing", "need-image"]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "games",
+      "name": "GAMES",
+      "years": "1977–1999 (scans so far)",
+      "description": "The puzzle magazine whose pages Will Shortz edited before the Times. Crosswords found in archive.org's scans; 1977 through 1979 are open for review.",
+      "repo": "https://github.com/EveryPuzzleProject/games",
+      "status_page": "https://everypuzzleproject.org/games/",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/EveryPuzzleProject/games/main/puzzles.tsv",
+          "note": "Written by the blitz tools' sync. One row per crossword the tools know of.",
+          "unit": "puzzles",
+          "column": "state",
+          "counts": [
+            {"label": "Restored", "kind": "done", "states": ["restored"]},
+            {"label": "In review", "kind": "progress", "states": ["review"]},
+            {"label": "Open for review", "kind": "progress", "states": ["open"]},
+            {"label": "Needs a person", "kind": "wanted", "states": ["needs-person"]},
+            {"label": "Missing", "kind": "wanted", "states": ["missing"]},
+            {"label": "Not open yet", "kind": "other", "states": ["later"]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bostonglobe",
+      "name": "The Boston Globe",
+      "years": "1917 on",
+      "description": "Crosswords since February 25, 1917, three years after the first one anywhere. Every Sunday since 1980 is indexed; the 1990s are missing entirely.",
+      "repo": "https://github.com/EveryPuzzleProject/bostonglobe",
+      "status_page": "https://everypuzzleproject.org/bostonglobe/",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/EveryPuzzleProject/bostonglobe/main/status.tsv",
+          "note": "One row per expected puzzle: every Sunday since 1980 (two on double-issue Sundays), the Themeless Week puzzles, and earlier series as found.",
+          "unit": "puzzles",
+          "column": "state",
+          "counts": [
+            {"label": "In the corpus", "kind": "done", "states": ["in-gxd"]},
+            {"label": "Submitted, under review", "kind": "progress", "states": ["in-mr"]},
+            {"label": "Ready to submit", "kind": "progress", "states": ["ready"]},
+            {"label": "Needs answers", "kind": "wanted", "states": ["need-answers"]},
+            {"label": "Known in print, needs a scan", "kind": "wanted", "states": ["need-image"]},
+            {"label": "Not found", "kind": "wanted", "states": ["missing"]},
+            {"label": "No puzzle that day", "kind": "other", "states": ["not-printed"]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "newyorkworld",
+      "name": "New York World",
+      "years": "1913–1924",
+      "description": "The first crossword series, from December 21, 1913. The World's own FUN pages survive badly, so each Sunday's puzzle is traced through the papers that reprinted it.",
+      "repo": "https://github.com/EveryPuzzleProject/newyorkworld",
+      "status_page": "https://everypuzzleproject.org/newyorkworld/",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/EveryPuzzleProject/newyorkworld/main/status.tsv",
+          "note": "One row per World puzzle, with its inferred Sunday and whether a copy has been found in any paper.",
+          "unit": "Sunday puzzles",
+          "column": "status",
+          "counts": [
+            {"label": "Copies found", "kind": "done", "states": ["have"]},
+            {"label": "Wanted", "kind": "wanted", "states": ["wanted"]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bell",
+      "name": "Bell Syndicate",
+      "years": "1924–1925",
+      "description": "One of the first syndicated crosswords. A syndicate has no paper of its own, so its puzzles survive only in the papers that bought them: which papers, and when.",
+      "repo": "https://github.com/EveryPuzzleProject/bell",
+      "status_page": "https://everypuzzleproject.org/bell/",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/EveryPuzzleProject/bell/main/printings.tsv",
+          "note": "One row per crossword printing seen in a paper.",
+          "unit": "printings",
+          "counts": [
+            {"label": "Printings indexed", "kind": "done"}
+          ]
+        },
+        {
+          "url": "https://raw.githubusercontent.com/EveryPuzzleProject/bell/main/wanted.tsv",
+          "note": "One row per page worth finding, each with the question it would answer.",
+          "unit": "pages",
+          "counts": [
+            {"label": "Pages wanted", "kind": "wanted"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "collegian",
+      "name": "The Daily Collegian",
+      "years": "1976–1981",
+      "description": "Mike Shenk's daily crossword for Penn State's paper, before he went to GAMES and later the Wall Street Journal. Every issue in the Pennsylvania Newspaper Archive, with the page the puzzle is on.",
+      "repo": "https://github.com/EveryPuzzleProject/collegian",
+      "status_page": "https://everypuzzleproject.org/collegian/",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/EveryPuzzleProject/collegian/main/puzzles.tsv",
+          "note": "One row per issue in the archive for the run: found (a puzzle on a known page), absent (a person looked: no puzzle that day), unsure (under review).",
+          "unit": "issues",
+          "column": "status",
+          "counts": [
+            {"label": "Puzzle located", "kind": "done", "states": ["found"]},
+            {"label": "Under review", "kind": "progress", "states": ["unsure"]},
+            {"label": "No puzzle that day", "kind": "other", "states": ["absent"]}
+          ]
+        }
+      ]
+    }
+  ]
+}
