@@ -6,8 +6,10 @@ and JavaScript; no build step.
 
 | File | What it is |
 |---|---|
-| `index.html` | The home page: the mission, the four steps from a publication to the corpus, the publications board, ways to help, blog links. |
+| `index.html` | The home page: the mission, the four steps from a publication to the corpus, the publications board, ways to help, the three newest posts. |
 | `publications.json` | The registry the board is drawn from: one entry per publication with its years, repo, status page, and which public TSV gives its counts and how to read it. Add a publication here and the board picks it up. |
+| `blog/` | The project's blog: one HTML file per post, `index.html` listing them newest first, and `img/` for their illustrations (public-domain scans and our own figures). Posts have no byline and link the review site at blitz.xwordapp.com. The old addresses under blitz.xwordapp.com/blog/ redirect here. |
+| `img/social-card.png` | The link-preview image (1200×630), made by `img/social_card.py` from the public-domain Judge cover beside it; rerun the script to change the words. |
 | `site.css` | The shared stylesheet: palette, type, and the `.epp-header` bar. The publication status pages link to it so the sites look like one family. |
 | `CNAME` | The custom domain. Keep it. |
 
