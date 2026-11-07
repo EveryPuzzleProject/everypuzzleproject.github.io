@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Judge, 1924–1939: our first full series</title>
-<meta name="description" content="How 531 crosswords from Judge magazine went from archive.org scans to xd files, each linked to its scan: what went well, what was hard, and what we're changing for the next publication.">
+<meta name="description" content="How 531 crosswords from Judge magazine went from archive.org scans to xd files, each linked to its scan, and what the first full series taught us.">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Every Puzzle Project">
 <meta property="og:title" content="Judge, 1924–1939: our first full crossword series">
-<meta property="og:description" content="531 crosswords from Judge magazine, from archive.org scans to xd files: what went well, what was hard, and what's next.">
+<meta property="og:description" content="531 crosswords from Judge magazine, from archive.org scans to xd files, and what the first full series taught us.">
 <meta property="og:url" content="https://everypuzzleproject.org/blog/judge.html">
 <link rel="canonical" href="https://everypuzzleproject.org/blog/judge.html">
 <meta property="og:image" content="https://everypuzzleproject.org/blog/img/judge1924-11-22-no4-judge-grid.jpg">
@@ -77,7 +77,7 @@
 
 <h1>Judge, 1924–1939: our first full series</h1>
 <p class="dek">Every crossword in <i>Judge</i> magazine from 1924 to 1939, 531 puzzles, read from scans on archive.org into
-  <a href="https://github.com/century-arcade/xdformat">xd</a> files. What went well, what was hard, and what we're changing for the next one.</p>
+  <a href="https://github.com/century-arcade/xdformat">xd</a> files, and what the first full series taught us.</p>
 <p class="byline">Every Puzzle Project · 12 October 2026</p>
 
 <figure class="narrow">
@@ -96,12 +96,10 @@
 
 <p>Until this month those puzzles existed only as page images. Now every one is an
   <a href="https://github.com/century-arcade/xdformat">xd</a> file, a plain-text crossword format, with its grid, clues,
-  answers, title, constructor and date, and a link to the scan it came from. In xd they can sit in a research
-  corpus beside a century of later puzzles, where they can be searched, counted and compared, and preserved
-  for posterity.</p>
+  answers, title, constructor and date, and a link to the scan it came from. In xd they can join the xd Crossword
+  Corpus beside a century of later puzzles, to be searched, counted and compared.</p>
 
-<p><i>Judge</i> was the first full series the Every Puzzle Project took from start to finish, and we learned a lot.
-  This is the story of how it went.</p>
+<p><i>Judge</i> was the first full series the Every Puzzle Project took from start to finish.</p>
 
 <div class="stats">
   <div class="stat"><b>531</b><span>crosswords: Nos. 1–122, a new run of Nos. 1–415, specials and second puzzles</span></div>
@@ -243,8 +241,8 @@ A74   PINED       What Romeo did for Jaliet.  <b>[odd: Jaliet]</b></pre>
   wrong, and a verdict, ready or what's left for a person. For No. 46 that was 15 clue fixes, the title, two
   answer-key letters and one misprint kept as printed ("plun.ber", a broken letter m).</p>
 
-<p>That's how a review came down to about 17,000 tokens (the costs are in the table below). It also makes the work manageable: the reviewer's attention
-  goes where there's evidence of a problem, and every decision it makes is tied to a piece of the scan.</p>
+<p>That brought a review down to about 17,000 tokens (the costs are in the table below), with every decision tied
+  to a piece of the scan.</p>
 
 <h3>What the person sees</h3>
 
@@ -278,14 +276,13 @@ A74   PINED       What Romeo did for Jaliet.  <b>[odd: Jaliet]</b></pre>
 <h3>Agents did the reading; people made the judgement calls</h3>
 
 <p>Of the ledger's roughly 12,000 rows, about 11,200 were written by agents. Human reviewers made most of the rest:
-  the project's maintainer made 489 edits by hand on 172 puzzles, and helpers on the review site made 46. That's the split we were hoping for. Claude is good at the
+  the project's maintainer made 489 edits by hand on 172 puzzles, and helpers on the review site made 46. Claude is good at the
   patient part: comparing 90 clues and 200 squares with a scan, one by one. A person is needed for the
   questions with no right answer in the scan: is this a misprint to keep, or a broken letter to fix? Is that an
   extra black square, or a smudge?</p>
 
-<p>It was also affordable, and how it got that way is a story in three steps. The measure that matters to us
-  is how many puzzles a week Claude can check on a Claude <abbr title="$100 a month">Max 5x</abbr> plan's weekly allowance, since that's what the
-  reviews ran on.</p>
+<p>It was also affordable. The measure that matters is how many puzzles a week Claude can check on a
+  Claude <abbr title="$100 a month">Max 5x</abbr> plan's weekly allowance, since that's what the reviews ran on.</p>
 
 <figure class="bars">
   <svg viewBox="0 0 600 168" role="img" aria-label="Puzzles checked a week on a Max 5x plan: about 270 when Claude reads the pages with no OCR, about 280 with OCR but every image reviewed, about 650 with OCR and a text-first packet">
@@ -333,8 +330,8 @@ A74   PINED       What Romeo did for Jaliet.  <b>[odd: Jaliet]</b></pre>
 
 <p>We ran the reviews on the plan's allowance, not the API: the project has no source of funding. We did try the text-first review through the API, on 11 puzzles Fable had
   already reviewed. Opus came close: it found about 80% of Fable's fixes, at about $0.11 a puzzle. Sonnet was
-  cheaper, at about $0.05, but found about 75%. Neither reliably kept printed misprints as printed. Pennies a puzzle
-  sounds small, but we hope to check many thousands of puzzles, and at that scale it's thousands of dollars.</p>
+  cheaper, at about $0.05, but found about 75%. Neither reliably kept printed misprints as printed. Over the many
+  thousands of puzzles still to check, pennies a puzzle is thousands of dollars.</p>
 
 <h3>The tools learned from the reviewers</h3>
 
@@ -373,7 +370,7 @@ A74   PINED       What Romeo did for Jaliet.  <b>[odd: Jaliet]</b></pre>
 
 <h3>1. Finding the puzzles came last, not first</h3>
 
-<p>Finding the pages sounds like the easy part. It wasn't. In 1925 and 1926 <i>Judge</i> printed the grid
+<p>In 1925 and 1926 <i>Judge</i> printed the grid
   under a decorative title the OCR couldn't read, with the clues on the facing page. Neither page looked like a
   crossword on its own, and our first run found almost nothing from those two years.</p>
 
@@ -518,7 +515,7 @@ A74   PINED       What Romeo did for Jaliet.  <b>[odd: Jaliet]</b></pre>
 <p><b>Circled squares.</b> We didn't expect these so early. No. 6's second face has circled eyes, and in December
   1936 a puzzle called "Dirty Work at the Crosswords" turned the grid into a whodunit: the letters in its circled
   squares were clues to "the culprit's identity", three words of 3, 7 and 8 letters. (THE FARMER'S DAUGHTER.) Our
-  tools had nothing for circles, so we had to scramble. The review page gained a way to mark a square circled or
+  tools had nothing for circles. The review page gained a way to mark a square circled or
   shaded, shown with who marked it, and the marks go into the xd. Spotting circles automatically is still on the
   list.</p>
 
@@ -554,15 +551,12 @@ A74   PINED       What Romeo did for Jaliet.  <b>[odd: Jaliet]</b></pre>
   <li><b>Help complete <i>Judge</i>.</b> archive.org's scans stop in January 1939, but <i>Judge</i> ran until
     1947. It was revived in October 1953 as a weekly, with a crossword again. If you know where issues from 1939–1947,
     or from the 1950s revival, can be found, tell us in the <a href="https://github.com/EveryPuzzleProject/census">census</a>.</li>
-  <li><b>Follow <i>Judge</i>'s status,</b> puzzle by puzzle, on its <a href="https://everypuzzleproject.github.io/judge/">status page</a>.</li>
+  <li><b>Follow <i>Judge</i>'s status,</b> puzzle by puzzle, on its <a href="https://everypuzzleproject.org/judge/">status page</a>.</li>
 </ul>
 
-<p class="note">This is a research archive: an accurate record of puzzles as they were printed, each linked to its
-  source scan. It isn't a place to play old puzzles. The scans shown here are from <i>Judge</i> issues
-  published before 1931, which are in the public domain. Thanks to the Internet Archive for the scans, to
-  Saul Pwanson's xd crossword corpus, and to David Steinberg's
-  <a href="http://www.preshortzianpuzzleproject.com/">Pre-Shortzian Puzzle Project</a> for showing what a group of
-  highly motivated volunteers can do.</p>
+<p class="note">Thanks to the Internet Archive for the scans, to Saul Pwanson and the xd Crossword Corpus, and to
+  David Steinberg's <a href="http://www.preshortzianpuzzleproject.com/">Pre-Shortzian Puzzle Project</a> for showing
+  what a group of volunteers can do.</p>
 
 </main>
 </body>
