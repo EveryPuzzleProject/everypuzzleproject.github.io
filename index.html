@@ -78,6 +78,39 @@
   footer .wrap { padding-top: 18px; padding-bottom: 28px; font-size: 14px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 20px; }
   @media (max-width: 560px) { .lede { font-size: 17px; } h1 { font-size: 26px; } }
 </style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://everypuzzleproject.org/#org",
+   "name": "Every Puzzle Project",
+   "alternateName": [
+    "EPP",
+    "The Every Puzzle Project"
+   ],
+   "url": "https://everypuzzleproject.org/",
+   "logo": "https://everypuzzleproject.org/img/social-card.png",
+   "description": "Preserving every crossword ever printed: a census of the publications that ran crosswords, and a transcription of each puzzle into an xd file linked to its scan, archived in the xd Crossword Corpus.",
+   "sameAs": [
+    "https://github.com/EveryPuzzleProject",
+    "https://blitz.xwordapp.com/"
+   ]
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://everypuzzleproject.org/#site",
+   "name": "Every Puzzle Project",
+   "alternateName": "EPP",
+   "url": "https://everypuzzleproject.org/",
+   "publisher": {
+    "@id": "https://everypuzzleproject.org/#org"
+   }
+  }
+ ]
+}
+</script>
 </head>
 <body>
 <header class="epp-header"><div class="wrap">
