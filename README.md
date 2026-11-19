@@ -12,6 +12,16 @@ and JavaScript; no build step.
 | `img/social-card.png` | The link-preview image (1200×630), made by `img/social_card.py` from the public-domain Judge cover beside it; rerun the script to change the words. |
 | `site.css` | The shared stylesheet: palette, type, and the `.epp-header` bar. The publication status pages link to it so the sites look like one family. |
 | `CNAME` | The custom domain. Keep it. |
+| `sitemap.xml`, `robots.txt` | For search engines. The sitemap lists the home page, the blog, every post, the census and the status pages. It also covers the separate project sites under this domain, because only the root's robots.txt is read. |
+
+## Adding a post or a site
+
+A new post needs three things beyond the page itself: one `<link rel="canonical">`, a
+`BlogPosting` JSON-LD block before `</head>` (copy one from an existing post and change the
+headline, description, url, dates and image), and a `<url>` line in `sitemap.xml`. A new
+status page or project site under this domain needs a sitemap line too. The home page's
+JSON-LD names the project, its alias "EPP", and its other homes (the GitHub org and
+blitz.xwordapp.com); add a new home to its `sameAs`.
 
 The publication status pages (`/judge/`, `/bostonglobe/`, `/newyorkworld/`, `/bell/`,
 `/games/`, `/collegian/`) are separate repos, each published as its own GitHub Pages
