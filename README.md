@@ -8,7 +8,7 @@ and JavaScript; no build step.
 |---|---|
 | `index.html` | The home page: the mission, the four steps from a publication to the corpus, the publications board, ways to help, the three newest posts. |
 | `publications.json` | The registry the board is drawn from: one entry per publication with its years, repo, status page, and which public TSV gives its counts and how to read it. Add a publication here and the board picks it up. |
-| `blog/` | The project's blog: one HTML file per post, `index.html` listing them newest first, and `img/` for their illustrations (public-domain scans and our own figures). Posts have no byline and link the review site at blitz.xwordapp.com. The old addresses under blitz.xwordapp.com/blog/ redirect here. |
+| `blog/` | The project's blog: one HTML file per post, `index.html` listing them newest first, and `img/` for their illustrations (public-domain scans and our own figures). Posts carry the byline "Alex DeJarnatt · Every Puzzle Project · date" and link the review site at blitz.xwordapp.com. The old addresses under blitz.xwordapp.com/blog/ redirect here. |
 | `img/social-card.png` | The link-preview image (1200×630), made by `img/social_card.py` from the public-domain Judge cover beside it; rerun the script to change the words. |
 | `site.css` | The shared stylesheet: palette, type, and the `.epp-header` bar. The publication status pages link to it so the sites look like one family. |
 | `CNAME` | The custom domain. Keep it. |
@@ -16,9 +16,10 @@ and JavaScript; no build step.
 
 ## Adding a post or a site
 
-A new post needs three things beyond the page itself: one `<link rel="canonical">`, a
-`BlogPosting` JSON-LD block before `</head>` (copy one from an existing post and change the
-headline, description, url, dates and image), and a `<url>` line in `sitemap.xml`. A new
+A new post needs these beyond the page itself: the byline, a `<meta name="author">`, one
+`<link rel="canonical">`, a `BlogPosting` JSON-LD block before `</head>` (copy one from an
+existing post and change the headline, description, url, dates and image; its author is the
+byline's), and a `<url>` line in `sitemap.xml`. A new
 status page or project site under this domain needs a sitemap line too. The home page's
 JSON-LD names the project, its alias "EPP", and its other homes (the GitHub org and
 blitz.xwordapp.com); add a new home to its `sameAs`.
